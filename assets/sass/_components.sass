@@ -1,0 +1,69 @@
+/*============================================
+ * Componenents
+ * Project:  2013 CSS Off
+ *
+ *--Table of Contents--
+ *--#Alerts--
+ *
+ * ==========================================*/
+
+/*============================================
+ #Readme
+ *
+ * This file hold the sections of the site that deal with the business logic. Sidebars, headers, navigation, etc.
+ * Modules are made up of components which are built using the framework.
+ * ==========================================*/
+
+/*============================================
+ #Alerts
+ * ========================================*/
+
+
+// #Alerts
+
+.alert
+  @extend .soft-half
+  @extend .push-half--ends
+  background: #D9EDF7
+  border: solid 1px darken(#BCE8F1, 10%)
+  box-shadow: 0 1px 3px rgba(0,0,0,.15)
+  position: relative
+  text-align: left
+  a
+    border-bottom: solid 1px transparent
+    font-weight: 600
+
+    &:hover,
+    &:focus
+      border-bottom: solid 1px
+  
+  p:last-of-type
+    margin-bottom: 0
+
+  .close
+    border: none
+    cursor: pointer
+    display: block
+    height: 30px
+    font-size: 24px
+    position: absolute
+    right: 8px
+    top: 8px
+    &:hover
+      border-bottom: none
+
+      i
+        font-size: 24px
+
+    &:active
+      top: 9px
+
+.alert--success
+  background-: #DFF0D8
+  border: solid 1px darken(#D6E9C6, 10%)
+
+.alert--error
+  background: #F2DEDE
+  border: solid 1px darken(#EED3D7, 10%)
+
+

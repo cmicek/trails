@@ -1,0 +1,223 @@
+/*============================================
+ * Helpers
+ * Project:  
+ *
+ *--Table of Contents--
+ *--#Readme--
+ *--#Helpers--
+ *  #Colors
+ *  #Add/remove floats
+ *  #Text alignment
+ *  #Font weights
+ *  #Add/remove margins
+ *  #Add/remove paddings
+ *  #display
+ *  #clearfix
+
+ * ==========================================*/
+
+/*============================================
+ #Readme
+ *
+ * A series of helper classes to use arbitrarily. Only use a helper class if an
+ * element/component doesn’t already have a class to which you could apply this
+ * styling, e.g. if you need to float `.main-nav` left then add `float:left to
+ * that ruleset as opposed to adding the `.float--left` class to the markup.
+ *
+ * A lot of these classes carry ` !important` as you will always want them to win
+ * out over other selectors.
+ *
+ * ==========================================*/
+
+
+ /*============================================
+ #Helpers
+ * ==========================================*/
+
+// #Colors
+
+.green
+  color: $green
+.beige
+  color: $beige
+.blue
+  color: $blue
+.red
+  color: $red
+.teal
+  color: $teal
+.purple
+  color: $purple
+.orange
+  color: $orange
+.yellow
+  color: $yellow
+.greenish
+  color: $greenish
+.transparent
+  color: $transparent
+
+// #Add/remove floats
+ 
+.float--right  
+  float: right !important
+.float--left   
+  float: left !important
+.float--none   
+  float: none  !important
+
+
+
+// #Text alignment
+ 
+.text--left    
+  text-align: left important
+.text--center  
+  text-align: center  !important
+.text--right   
+  text-align: right  !important
+
+
+
+// #Font weights
+ 
+.weight--light     
+  font-weight: 300  !important
+.weight--normal    
+  font-weight: 400  !important
+.weight--semibold  
+  font-weight: 600  !important
+
+
+
+// #Add/remove margins
+
+ 
+.push          
+  margin: $base*2 !important
+.push--top     
+  margin-top: $base*2 !important
+.push--right   
+  margin-right: $base*2 !important
+.push--bottom  
+  margin-bottom: $base*2 !important
+.push--left
+  margin-left: $base*2 !important
+.push--ends
+  margin-top: $base*2 !important
+  margin-bottom: $base*2 !important
+.push--sides
+  margin-right: $base*2 !important
+  margin-left: $base*2 !important
+
+.push-half         
+  margin: $base !important
+.push-half--top    
+  margin-top: $base !important
+.push-half--right  
+  margin-right: $base !important
+.push-half--bottom 
+  margin-bottom: $base !important
+.push-half--left   
+  margin-left: $base !important
+.push-half--ends   
+  margin-top: $base !important
+  margin-bottom: $base !important
+.push-half--sides  
+  margin-right: $base !important
+  margin-left: $base !important
+
+.flush         
+  margin: 0 !important
+.flush--top    
+  margin-top: 0 !important
+.flush--right  
+  margin-right: 0 !important
+.flush--bottom 
+  margin-bottom: 0 !important
+.flush--left   
+  margin-left: 0 !important
+.flush--ends   
+  margin-top: 0 !important
+  margin-bottom: 0 !important
+.flush--sides  
+  margin-right: 0 !important
+  margin-left: 0 !important
+
+
+
+// #Add/remove paddings
+ 
+.soft          
+  padding: $base*2 !important
+.soft--top     
+  padding-top: $base*2 !important
+.soft--right   
+  padding-right: $base*2 !important
+.soft--bottom  
+  padding-bottom: $base*2 !important
+.soft--left    
+  padding-left: $base*2 !important
+.soft--ends    
+  padding-top: $base*2 !important
+  padding-bottom: $base*2 !important
+.soft--sides   
+  padding-right: $base*2 !important
+  padding-left: $base*2 !important
+
+.soft-half          
+  padding:       $base !important
+.soft-half--top     
+  padding-top:   $base !important
+.soft-half--right   
+  padding-right: $base !important
+.soft-half--bottom  
+  padding-bottom: $base !important
+.soft-half--left    
+  padding-left:  $base !important
+.soft-half--ends    
+  padding-top:   $base !important
+  padding-bottom: $base !important
+.soft-half--sides   
+  padding-right: $base !important
+  padding-left:  $base !important
+
+.hard          
+  padding: 0 !important
+.hard--top     
+  padding-top: 0 !important
+.hard--right   
+  padding-right: 0 !important
+.hard--bottom  
+  padding-bottom: 0 !important
+.hard--left    
+  padding-left: 0 !important
+.hard--ends    
+  padding-top: 0 !important
+  padding-bottom: 0 !important
+.hard--sides   
+  padding-right: 0 !important
+  padding-left: 0 !important
+
+// #display
+
+.inline
+  display: inline
+.relative
+  position: relative
+.fixed
+  position: fixed
+  top: 200px
+  width: 100%
+
+// #clearfix
+
+.cf
+  zoom: 1
+  &:before,
+  &:after
+    content: ""
+    display: table
+
+  &:after
+    clear: both

@@ -1,0 +1,527 @@
+/*============================================
+ * Framework
+ * Project:  Chartacourse 2013
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--Typography--
+ *  #Fonts
+ *  #Headings
+ *  #Text
+ *  #Links
+ *  #Lists
+ *  #Tables
+ *  #Other
+ *--Layout--
+ *  #Grid
+ *--Form Elements--
+ * ==========================================*/
+
+/*============================================
+ #Readme
+ *
+ * This file is the base framework containing a number of objects and abstractions
+ * that form the basis for much of the app/site. CSS for new or un-anticipated site
+ * elements should go in modules.sass or components.sass
+ * ==========================================*/
+
+/*============================================
+  Main
+  * ========================================*/
+
+/*============================================
+  Typography
+  * ========================================*/
+
+
+body,html
+  color: $grey100
+  font: 16px/22px $sans-serif
+
+
+::selection
+  // background: $blue
+  // text-shadow: none
+
+::-moz-selection
+  // background: $blue
+  // text-shadow: none
+
+
+//  #Fonts
+
+//  #Headings
+
+
+h1,.h1
+  @include transition(color.25s)
+  color: $grey100
+  font: normal 200 34px/36px $sans-serif
+  position: relative
+
+
+h2,.h2
+  @include transition(color.25s)
+  color: $grey100
+  font: normal 400 22px/32px $sans-serif
+
+ 
+h3,.h3
+  @include transition(color.25s)
+  color: $grey100
+  font: normal normal 18px/32px $sans-serif
+
+//  #Text
+
+p
+  @include transition(color.25s)
+  margin: 0 0 24px 0
+
+  &:last-child
+    margin-bottom: 0
+
+strong,em,b,i
+  @include transition(color.25s)
+//  #Links
+a
+  @include transition(background .25s,color.25s, border .25s)
+  background: transparentize($blue, 1)
+  border-bottom: solid 1px $blue
+  color: $blue
+  position: relative
+  text-decoration: none
+  &:hover
+    background: transparentize($blue, 0)
+    border-bottom: solid 1px $blue
+    color: #fff
+
+  &:active,
+  &:focus
+    background: transparentize($blue, 0)
+    border-bottom: solid 1px $blue
+    box-shadow: inset 0 0 3px rgba(0,0,0,.75)
+    text-shadow: none
+    color: #fff
+    top: 1px
+  em,b,i,strong
+    @include transition(none)
+
+a.enlarge-image
+  position: relative
+  display: block
+//  #Lists
+
+ul,ol
+  @include transition(color.25s)
+  padding: 0 0 24px 0
+  li
+    @include transition(color.25s)
+    margin-left: 24px
+    margin-bottom: 8px
+    padding-left: 8px
+    &:last-child
+      margin-bottom: 0
+  ul,ol
+    padding-top: 8px
+    padding-bottom: 0
+ul li
+  font-size: 16px
+  list-style: disc
+
+  ul li
+    list-style: circle
+ol li
+  list-style: decimal
+
+  ol li
+    list-style: lower-alpha
+
+
+//  #Tables
+
+table
+  border-top: solid 1px $grey10
+  font: normal normal 16px/20px $sans-serif
+  margin-bottom: 24px
+  text-align: left
+  width: 100%
+  td,th
+    padding: 5px 8px
+  th
+    background: $grey5
+    color: $grey80
+    font-size: 11px
+    font-weight: 300
+    text-transform: uppercase
+  thead
+    td,th
+      border-bottom: solid 1px $grey10
+  tbody
+    tr:first-child
+      td,th
+        padding-top: 10px
+    tr:last-child
+      td,th
+        border-bottom: solid 1px $grey10
+        padding-bottom: 10px
+    tr.disabled
+      td,th
+        color: $grey50
+        font-size: 14px
+        padding: 4px
+
+
+  tfoot
+    td,th
+      border-top: solid 1px $grey10
+
+table.with-header
+  thead
+    th
+      background: $grey5
+      border-top: solid 1px $grey10
+
+.t5
+  width: 5%
+.t6
+  width: 6%
+.t7
+  width: 7%
+.t8
+  width: 8%
+.t9
+  width: 9%
+.t10
+  width: 10%
+.t12
+  width: 12.5%       /* 1/8 */
+.t15
+  width: 15%
+.t16
+  width: 16%
+.t17
+  width: 17%
+.t18
+  width: 18%
+.t19
+  width: 19%
+.t20
+  width: 20%
+.t25
+  width: 25%         /* 1/4 */
+.t30
+  width: 30%
+.t33
+  width: 33.333%     /* 1/3 */
+.t35
+  width: 35%
+.t37
+  width: 37.5%       /* 3/8 */
+.t40
+  width: 40%
+.t45
+  width: 45%
+.t50
+  width: 50%         /* 1/2 */
+.t55
+  width: 55%
+.t60
+  width: 60%
+.t62
+  width: 62.5%       /* 5/8 */
+.t65
+  width: 65%
+.t66
+  width: 66.666%     /* 2/3 */
+.t70
+  width: 70%
+.t75
+  width: 75%         /* 3/4*/
+.t80
+  width: 80%
+.t85
+  width: 85%
+.t87
+  width: 87.5%       /* 7/8 */
+.t90
+  width: 90%
+.t95
+  width: 95%
+.t100
+  width: 100%
+
+//  #Other
+
+.sep
+  @extend .cf
+  background: $grey10
+  display: block
+  overflow: hidden
+  height: 1px
+  width: 100%
+
+blockquote
+  @include transition(color.25s)
+  border-left: solid 1px $green
+  display: block
+  margin-left: 24px
+  margin-bottom: 24px
+  padding-left: 24px
+  position: relative
+  &:after
+    @include transition(color.25s, border .25s)
+    border-left: solid 1px $green
+    content: ""
+    display: block
+    height: 100%
+    left: 4px
+    position: absolute
+    top: 0px
+small
+  color: $grey50
+  font-size: 15px
+
+
+img
+  @include transition(opacity .5s)
+  @include transform(translate3d(0,0,0))
+  height: auto
+  max-width: 100%
+  opacity: 1
+
+
+pre
+  margin-bottom: 24px
+
+code
+  font-size: 16px
+
+
+
+/*============================================
+  Layout
+  * ========================================*/
+
+*
+  @include box-sizing(border-box)
+
+//  #Grid
+
+$colwidth: 5.8471014493%
+$colspacing: 1.2884043608%
+
+.grid
+  float: left
+  margin-bottom: $base*2
+  margin-left: 0
+  width: 100%
+
+.container
+  @extend .cf
+  display: block
+  height: 100%
+  margin: 0 auto
+  overflow: hidden
+  padding: 0 0 0 0
+  position: relative
+
+
+%col
+  display: block
+  width: 100%
+  @include breakpoint($bp--small)
+    float: left
+  
+.row
+  @extend .cf
+  display: block
+  width: 100%
+
+@for $i from 1 through 12
+  $iminus: $i/12
+  .col#{$i}
+    @extend %col
+    @include breakpoint($bp--small)
+      width: 100%*$iminus
+
+//  Generates offsets
+@for $i from 1 through 12
+  $iminus: $i/12
+  .offset#{$i}
+    @include breakpoint($bp--small)
+      margin-left: 100%*$iminus
+
+
+
+/*============================================
+  Form Elements
+  * ========================================*/
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=email],
+textarea,
+select
+  border: solid 1px $grey30
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.10), 0 1px 0 #fff
+  border-radius: 0
+  background-color: $grey5
+  color: #666
+  float: left
+  font-family: $sans-serif
+  font-size: 16px
+  height: 40px
+  line-height: 16px
+  margin-top: $base/2
+  padding: 4px 6px 4px 10px
+  width: 100%
+
+  &:focus
+    background-color: #fff
+
+  &:disabled
+    border: solid 1px $grey10
+    box-shadow: none
+    color: #ccc
+    opacity: .75
+
+
+textarea
+  height: 175px
+  padding: 10px
+select
+  -webkit-appearance: none
+  height: 40px
+  padding-top: 8px
+  padding-bottom: 8px
+select[multiple]
+  height: 120px
+
+// select
+
+//   @media only screen and (-webkit-min-device-pixel-ratio: 0)
+//     &
+//       background-image: url(assets/images/bg-select.png) !important
+//       background-repeat: no-repeat
+//       background-position: center right
+//       padding-top: 0
+//       padding-bottom: 0
+
+
+/*============================================
+  Abstractions
+  * ========================================*/
+
+/*============================================
+  Abstractions
+  * ========================================*/
+
+// #Inset/Outset
+
+.inset
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.75)
+.outset
+  box-shadow: 0 1px 3px rgba(0,0,0,.1)
+
+//  #Nav
+
+/*
+ * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ * When used on an `ol` or `ul`, this class throws the list into horizontal mode
+ * e.g.:
+ * <ul class=nav>
+ *     <li><a href=#>Home</a></li>
+ *li><a href=#>About</a></li>
+ *     <li><a href=#>Portfolio</a></li>
+ *     <li><a href=#>Contact</a></li>
+ * </ul>
+ */
+
+.nav
+  list-style: none
+  margin: 0
+  padding: 0
+  @extend .cf
+
+  li,
+  li > a,
+  li > span
+    list-style: none
+    display: inline-block
+    padding: 0
+    zoom: 1
+  li > a
+    cursor: pointer
+
+.nav-centered
+  text-align: center
+
+
+.stacked
+  > li
+    display: list-item
+    margin: 0
+    > a,
+    > span
+      display: block
+
+.nav.with-separator
+
+  > li:before
+    content: "|"
+    color: rgba(0,0,0,.4)
+    display: inline
+    margin: 0 10px
+
+
+  > li:first-child:before,
+  > li.first:before
+    display: none
+
+//  #Media
+
+.media
+  margin: 8px
+  overflow: hidden
+
+  .img
+    display: block
+    float: left
+    margin-right: 16px
+  a.img
+    border: solid 2px #fff
+    &:hover
+      border-color: $blue
+  img
+    display: block
+    height: auto
+    max-width: 100%
+
+  .imgExt
+    float: right
+    margin-left: 8px
+  .bd
+    overflow: hidden
+    @include breakpoint(ipad)
+      padding: 0 0 0 16px
+
+
+//  #Tabs
+
+.tabs--nav 
+  .active a
+    color: #000
+    cursor: default
+    font-weight: bold
+    border-bottom: none
+
+    &:hover,
+    &:focus
+      border-bottom: none
+.tab
+  display: none
+
+  &.active
+    display: block
