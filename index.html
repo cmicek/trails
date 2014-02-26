@@ -2,149 +2,164 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Clicker Oregon Trail</title>
+  <title>Harvest Clicker</title>
   
 
   <!-- All CSS Links -->
+  <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 </head>
 <body>
-  <header class="soft">
-    <h1>Trails <span class="push--sides"><small> Distance: <!--ko text: distance--><!--/ko--> mi  <small class="push--sides">|</small>  Days: <!--ko text: days--><!--/ko--></small></span><input type="submit" value="End Day" class="fr" data-bind="click: endDay"></h1>
+  <header class="soft cf">
+    <h1 class="float--left">Trails
+      <span class="push--sides">
+        <small><!--ko text: getTime()--><!--/ko--></small>
+        <small class='push-half--sides'>|</small>
+        <small>Day: <!--ko text: days--><!--/ko--></small>
+      </span>
+      <input type="submit" value="Start Day" class="fr" data-bind="click: startDay, enable: dayStatus() === 'morning' ">
+      <input type="submit" value="Sleep" class="fr" data-bind="click: sleep, enable: dayStatus() === 'evening'">
+    </h1>
+    <ul class="nav tabs--nav float--right soft-half--top"> 
+      <li ><a data-toggle="tab" href="#info">Info</a></li>
+      <li class="active"><a data-toggle="tab" href="#farm">Farm</a></li>
+    </ul>
   </header>
   <div class="sep"></div>
-  <div class="row">
-    <section class="col6 soft">
-      <h2 class="push--bottom">People</h2>
-      <div class="tabs">
-        <ul class="nav tabs--nav" data-bind="foreach: travelers">
-          <li><a data-toggle="tab" data-bind="text: name, attr: {href: '#'+name}"></a><strong class="push-half--left error red" data-bind="visible: errors.length > 0"><!--ko text: errors.length--><!--/ko--> !</strong></li>
-        </ul>
-        <!--ko foreach: travelers-->
-          <div class="tab push-half--top" data-bind="attr: {id: name}">
-            <table>
-              <thead>
-                <tr>
-                  <th>Age</th>
-                  <th>Hitpoints</th>
-                  <th>Health</th>
-                  <th>Weight&nbsp;(lb)</th>
-                  <th>Height&nbsp;(in)</th>
-                  <th>Sex</th>
-                  <th>Gender</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-bind="text: age"></td>
-                  <td data-bind="text: hitpoints"></td>
-                  <td data-bind="text: health().name"></td>
-                  <td data-bind="text: Math.floor(weight())"></td>
-                  <td data-bind="text: formatHeight()"></td>
-                  <td data-bind="text: sex"></td>
-                  <td data-bind="text: gender"></td>
-                </tr>            
-              </tbody>
-            </table>
-            <h3 class="push--ends">Items</h3>
-            <table data-bind="visible: items().length > 0">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Value</th>
-                  <th>Weight</th>
-                  <th>Durability</th>
-                  <th>Uses</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody data-bind="foreach: items()">
-                <tr>
-                  <td data-bind="text: name"></td>
-                  <td data-bind="text: value"></td>
-                  <td data-bind="text: weight"></td>
-                  <td data-bind="text: durability"></td>
-                  <td data-bind="text: uses"></td>
-                  <td><button data-bind="click: use">Eat</button></td>  
-                </tr>         
-              </tbody>
-            </table>
-            <small data-bind="visible: items().length < 1"><!--ko text: name--><!--/ko--> has no items</small>
-            <h3 class="push--ends">Daily Activities</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Time</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody data-bind="foreach: activities()">
-                  <tr>
-                    <td data-bind="text: name"></td>
-                    <td data-bind="text: timePerformed"></td>
-                    <td data-bind="click: $parent.removeActivity"><span class="red">&times</span></td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
-        <!--/ko-->
-      </div>
-    </section>
-    <section class="col6 soft">
-      <h2 class="push--bottom">Travel</h2>
+  <section class="tabs">
+    <article class="tab" id="info">
       <div class="row">
-        <div class="col6 soft--right">
-          <label for="">Distance (mi):</label>
-          <input type="number" data-bind="value: distanceToTravel" min="0">
-        </div>
-        <div class="col6 soft--left">
-          <label for="">Speed (mph):</label>
-          <input type="number" data-bind="value: speedOfTravel" min="0">
-        </div>
-        <div class="col12 push--top">
-          <label for="">Rations:</label>
-          <select name="" id="" data-bind="value: rations">
-            <option value="none">No Rations</option>
-            <option value="lose">Lose Weight</option>
-            <option value="maintain">Maintain Weight</option>
-            <option value="gain">Gain Weight</option>
-          </select>
-        </div>
+        <section class="col6 soft">
+          <h2 class="push--bottom">People</h2>
+          <div class="tabs">
+            <ul class="nav tabs--nav" data-bind="foreach: travelers">
+              <li><a data-toggle="tab" data-bind="text: name, attr: {href: '#'+name}"></a><strong class="push-half--left error red" data-bind="visible: errors.length > 0"><!--ko text: errors.length--><!--/ko--> !</strong></li>
+            </ul>
+            <!--ko foreach: travelers-->
+              <div class="tab push-half--top" data-bind="attr: {id: name}">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Age</th>
+                      <th>Hitpoints</th>
+                      <th>Health</th>
+                      <th>Weight&nbsp;(lb)</th>
+                      <th>Height&nbsp;(in)</th>
+                      <th>Sex</th>
+                      <th>Gender</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-bind="text: age"></td>
+                      <td data-bind="text: hitpoints"></td>
+                      <td data-bind="text: health().name"></td>
+                      <td data-bind="text: Math.floor(weight())"></td>
+                      <td data-bind="text: formatHeight()"></td>
+                      <td data-bind="text: sex"></td>
+                      <td data-bind="text: gender"></td>
+                    </tr>            
+                  </tbody>
+                </table>
+                <h3 class="push--ends">Items</h3>
+                <table data-bind="visible: items().length > 0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Value</th>
+                      <th>Weight</th>
+                      <th>Durability</th>
+                      <th>Uses</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody data-bind="foreach: items()">
+                    <tr>
+                      <td data-bind="text: name"></td>
+                      <td data-bind="text: value"></td>
+                      <td data-bind="text: weight"></td>
+                      <td data-bind="text: durability"></td>
+                      <td data-bind="text: uses"></td>
+                      <td><button data-bind="click: use">Eat</button></td>  
+                    </tr>         
+                  </tbody>
+                </table>
+                <small data-bind="visible: items().length < 1"><!--ko text: name--><!--/ko--> has no items</small>
+                <h3 class="push--ends">Daily Activities</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Time</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody data-bind="foreach: activities()">
+                      <tr>
+                        <td data-bind="text: name"></td>
+                        <td data-bind="text: timePerformed"></td>
+                        <td data-bind="click: $parent.removeActivity"><span class="red">&times</span></td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            <!--/ko-->
+          </div>
+        </section>
+        <section class="col6 soft">
+          <h2 class="push--bottom">Travel</h2>
+          <div class="row">
+            <div class="col12 push--top">
+              <label for="">Rations:</label>
+              <select name="" id="" data-bind="value: rations">
+                <option value="none">No Rations</option>
+                <option value="lose">Lose Weight</option>
+                <option value="maintain">Maintain Weight</option>
+                <option value="gain">Gain Weight</option>
+              </select>
+            </div>
+          </div>
+          <div class="sep push--top"></div>
+          <h2 class="push--ends">Activities</h2>
+          <select class="col12 push--bottom" data-bind="options: activities, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...', value: newActivityId"></select>
+          <div class="row push--bottom">
+            <div class="col6 soft--right">
+              <label for="">How Long? (hrs)</label>
+              <input type="number" min="1" max="24" data-bind="value: newActivityTime">
+            </div>
+            <div class="col6 soft--left">
+              <label for="">To whom?</label>
+              <select  data-bind="options: travelers, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...', value: newActivityTarget"></select>
+            </div>
+          </div>
+          <input type="submit" value="Add Activity" class="fr" data-bind="click: addActivity">
+        </section>
       </div>
-      <div class="sep push--top"></div>
-      <h2 class="push--ends">Activities</h2>
-      <select class="col12 push--bottom" data-bind="options: activities, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...', value: newActivityId"></select>
-      <div class="row push--bottom">
-        <div class="col6 soft--right">
-          <label for="">How Long? (hrs)</label>
-          <input type="number" min="1" max="24" data-bind="value: newActivityTime">
-        </div>
-        <div class="col6 soft--left">
-          <label for="">To whom?</label>
-          <select  data-bind="options: travelers, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...', value: newActivityTarget"></select>
-        </div>
-      </div>
-      <input type="submit" value="Add Activity" class="fr" data-bind="click: addActivity">
-    </section>
-  </div>
-  
+    </article>
+    <article class="tab active" id="farm">
+      <pre id="terrain" class="terrain"></pre>
+    </article>
+  </section>
   
   
 
+  
 
   
 
   <script type="text/javascript" src="assets/js/vendor/jquery-2.0.3.min.js"></script>
   <script type="text/javascript" src="assets/js/vendor/knockout-3.0.0.js"></script>
   <script type="text/javascript" src="assets/js/vendor/bootstrap-tab.js"></script>
+  <script type="text/javascript" src="assets/js/vendor/jquery-ui-1.10.4.custom.min.js"></script>
   
   <script type="text/javascript" src="assets/js/core.js"></script>
   
+  <script type="text/javascript" src="assets/js/terrain-model.js"></script>
   <script type="text/javascript" src="assets/js/equipment-model.js"></script>
   <script type="text/javascript" src="assets/js/food-model.js"></script>
   <script type="text/javascript" src="assets/js/item-model.js"></script>
   <script type="text/javascript" src="assets/js/tool-model.js"></script>
+  <script type="text/javascript" src="assets/js/livingCreature-model.js"></script>
   <script type="text/javascript" src="assets/js/activities-model.js"></script>
 
   <script type="text/javascript" src="assets/js/item-view.js"></script>
@@ -154,9 +169,14 @@
   <script type="text/javascript" src="assets/js/livingCreature_Animal-view.js"></script>
   <script type="text/javascript" src="assets/js/livingCreature_Person-view.js"></script>
   <script type="text/javascript" src="assets/js/livingCreature-view.js"></script>
-  <script type="text/javascript" src="assets/js/journey-view.js"></script>
+  
+
+  
+  <script type="text/javascript" src="assets/js/terrain-view.js"></script>
+  <script type="text/javascript" src="assets/js/farm-view.js"></script>
   
   <script type="text/javascript" src="assets/js/script.js"></script>
-  
+
+
   </body>
 </html>
