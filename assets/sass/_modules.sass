@@ -19,4 +19,40 @@
  #Main
  * ========================================*/
 
-body
+.terrain
+  color: #000
+  line-height: 20px
+
+
+.terrain--item
+  cursor: pointer
+  display: inline-block
+
+  &.ui-selectee:hover
+    background-color: transparentize($green, .9)
+    
+  &.ui-selecting
+    background-color: transparentize($green, .9)
+
+  &.ui-selected,
+  &.terrain--item__selected
+    background-color: transparentize($green, .8)
+    color: #000
+
+
+.terrain--item__selected.ui-selecting
+  background-color: transparentize($green, .9)
+  
+
+
+.terrain--item__grass
+  color: $beige
+
+.terrain--item__stone
+  color: $grey80
+.terrain--item__tree
+  color: $green
+
+.terrain--item__human
+  background: transparentize($orange, .9)
+  color: $orange

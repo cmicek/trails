@@ -4,14 +4,14 @@ var ActivityView  = function (attr){
 
   self.name           = attr.name;
   self.id             = attr.id;
-  self.timePerformed  = ko.observable(0);
+  self.timePerformed  = ko.observable(attr.timePerformed);
 
   // Private Functions
   
-  self.do = function () {
-    console.log(self.name + ' doing');
-  }
-  self.remove = function(){
-    console.log('oi');
-  }
+  // self.perform = function (self) {
+  //   ActivitiesModel[self.id].perform(self);
+  // }
+  // self.remove = function(){
+  //   console.log('oi');
+  // }
 }

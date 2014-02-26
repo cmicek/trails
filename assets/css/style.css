@@ -354,7 +354,7 @@ blockquote {
   -webkit-transition: color 0.25s;
   -moz-transition: color 0.25s;
   transition: color 0.25s;
-  border-left: solid 1px #466601;
+  border-left: solid 1px #2daa62;
   display: block;
   margin-left: 24px;
   margin-bottom: 24px;
@@ -364,7 +364,7 @@ blockquote {
     -webkit-transition: color 0.25s, border 0.25s;
     -moz-transition: color 0.25s, border 0.25s;
     transition: color 0.25s, border 0.25s;
-    border-left: solid 1px #466601;
+    border-left: solid 1px #2daa62;
     content: "";
     display: block;
     height: 100%;
@@ -390,6 +390,7 @@ img {
   opacity: 1; }
 
 pre {
+  font-family: "PT Mono", serif;
   margin-bottom: 24px; }
 
 code {
@@ -580,9 +581,10 @@ select {
 select[multiple] {
   height: 120px; }
 
-/*============================================
- * Abstractions
- * ======================================== */
+[disabled] {
+  opacity: 0.5;
+  box-shadow: none; }
+
 /*============================================
  * Abstractions
  * ======================================== */
@@ -727,6 +729,55 @@ select[multiple] {
   border: solid 1px #e0aeb6; }
 
 /*============================================
+ * Modules
+ * Project:  2013 CSS Off
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--#Main--
+ *
+ * ========================================== */
+/*============================================
+ * #Readme
+ *
+ * This file hold the sections of the site that deal with the business logic. Sidebars, headers, navigation, etc.
+ * Modules are made up of components which are built using the framework.
+ * ========================================== */
+/*============================================
+ * #Main
+ * ======================================== */
+.terrain {
+  color: black;
+  line-height: 20px; }
+
+.terrain--item {
+  cursor: pointer;
+  display: inline-block; }
+  .terrain--item.ui-selectee:hover {
+    background-color: rgba(45, 170, 98, 0.1); }
+  .terrain--item.ui-selecting {
+    background-color: rgba(45, 170, 98, 0.1); }
+  .terrain--item.ui-selected, .terrain--item.terrain--item__selected {
+    background-color: rgba(45, 170, 98, 0.2);
+    color: black; }
+
+.terrain--item__selected.ui-selecting {
+  background-color: rgba(45, 170, 98, 0.1); }
+
+.terrain--item__grass {
+  color: #c8b594; }
+
+.terrain--item__stone {
+  color: #858285; }
+
+.terrain--item__tree {
+  color: #2daa62; }
+
+.terrain--item__human {
+  background: rgba(168, 76, 0, 0.1);
+  color: #a84c00; }
+
+/*============================================
  * Helpers
  * Project:  
  *
@@ -761,7 +812,7 @@ select[multiple] {
  * #Helpers
  * ========================================== */
 .green {
-  color: #466601; }
+  color: #2daa62; }
 
 .beige {
   color: #c8b594; }
@@ -783,9 +834,6 @@ select[multiple] {
 
 .yellow {
   color: #bd882a; }
-
-.greenish {
-  color: #34995f; }
 
 .transparent {
   color: rgba(255, 255, 255, 0); }

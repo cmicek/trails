@@ -5,6 +5,11 @@
 // ==============================================================================================
 //
 
+
+function getRandomInt (min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    
 Number.prototype.round = function(decimals) {
   return Math.round(this * Math.pow(10, decimals)) / Math.pow(10, decimals);
 }
@@ -34,6 +39,41 @@ Number.prototype.asPercent = function() {
 
 Number.prototype.asGallons = function() {
   return this.toFixed(2) + " gal";
+}
+
+Number.prototype.asTime = function() {
+  var time = this;
+  var minutes = time - Math.floor(time);
+  var tStr = '';
+  var isPM = false;
+  
+  if(time >= 12 && time < 13){
+    tStr = 12;
+    isPM = true;
+  }else if(time >= 13){
+    tStr = Math.floor(time) - 12;
+    isPM = true;
+  }else{
+    tStr = Math.floor(time)
+  }
+  if(minutes === 0){
+    tStr += ':00';
+  }
+  if(minutes === .25){
+    tStr += ':15';
+  }
+  if(minutes === .5){
+    tStr += ':30';
+  }
+  if(minutes === .75){
+    tStr += ':45';
+  }
+  if(isPM){
+    tStr += ' pm';
+  }else{
+    tStr += ' am';
+  }
+  return tStr;
 }
 
 
